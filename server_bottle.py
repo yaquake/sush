@@ -1,5 +1,5 @@
 import json
-import hashlib
+import hashlib, bottle
 from base64 import b64encode, b64decode
 from Cryptodome.Cipher import AES
 from Cryptodome.Random import get_random_bytes
@@ -39,5 +39,7 @@ def api():
     else:
         return decrypt(request.json)
 
-    
-run(host='localhost', port=8008, debug=True)
+if __name__ == '__main__':
+    run(host='0.0.0.0', port=8008, debug=True, reloader=True)
+
+app = bottle.default_app()
